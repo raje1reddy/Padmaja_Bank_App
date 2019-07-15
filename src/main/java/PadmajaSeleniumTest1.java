@@ -13,28 +13,29 @@ public class PadmajaSeleniumTest1 {
         //WebDriver driver=new FirefoxDriver();
         WebDriver driver=new ChromeDriver();
         driver.get("http://demo.guru99.com/");
-//        WebElement element=driver.findElement(By.xpath("//input[@name='emailid']"));
-//        element.sendKeys("abc@gmail.com");
-//        driver.findElement(By.xpath("//input[@name='btnLogin']")).click();
-//        WebElement button=driver.findElement(By.xpath("//input[@name='btnLogin']"));
-//        button.click();
-        //driver.findElement(By.xpath("//input[@name='emailid']"))
-        //input[@name='emailid']
-        ///Access details to demo site.
-        //User ID :	mngr26593
-        //driver.findElement(By.xpath("//td[contains(text(),'mngr209206')]"))
-        //Password :	abc@123
+        WebElement element=driver.findElement(By.xpath("//input[@name='emailid']"));
+        //type email-id
+        element.sendKeys("123@test.com");
+        //click submit button
+        WebElement button=driver.findElement(By.xpath("//input[@name='btnLogin']"));
+        button.click();
 
-        //Got to this page -> "http://demo.guru99.com/"
+        //Read Used ID : creted
+        String user_id = driver.findElement(By.xpath("/html[1]/body[1]/table[1]/tbody[1]/tr[4]/td[2]")).getText();
+        //Read Password Created
+        String password = driver.findElement(By.xpath("/html[1]/body[1]/table[1]/tbody[1]/tr[5]/td[2]")).getText();
+
+
         // Clink on the bank project link
-        WebElement bankButton = driver.findElement(By.xpath("//a[contains(text(),'Bank Project')]"));
+        WebElement bankButton = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/nav[1]/div[1]/div[1]/ul[1]/li[5]/a[1]"));
         bankButton.click();
+
         // Enter User id
         WebElement userid = driver.findElement(By.xpath("//input[@name='uid']"));
-        userid.sendKeys("mngr26593");
+        userid.sendKeys(user_id);
         // Enter Password
-        WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
-        password.sendKeys("abc@123");
+        WebElement pass_word = driver.findElement(By.xpath("//input[@name='password']"));
+        pass_word.sendKeys(password);
         // Click Entere to inside bank app
         WebElement loginButtons = driver.findElement(By.xpath("//input[@name='btnLogin']"));
         loginButtons.click();
